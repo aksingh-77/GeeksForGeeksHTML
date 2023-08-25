@@ -1,0 +1,29 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Document</title>
+</head>
+<body>
+    <!--This is Important and nesteed templates didn't worked for me as expected-->
+    <template id="parentTemplate">
+        <h1>This is Parent Template</h1>
+        <template id="childTemplate">
+            <h2>Child Template</h2>
+        </template>
+    </template>
+
+</body>
+
+<script>
+    const parentTemplate = document.getElementById('parentTemplate');
+    const parentContent = parentTemplate.content.cloneNode(true);
+
+    const childTemplate = document.querySelector('#childTemplate');
+    const childContent = childTemplate.content.cloneNode(true);
+
+    parentContent.appendChild(childContent);
+    document.body.appendChild(childContent);
+</script>
+</html>
